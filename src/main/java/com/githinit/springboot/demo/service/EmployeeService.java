@@ -1,10 +1,10 @@
-package com.githinit.springboot.demo.dao;
+package com.githinit.springboot.demo.service;
 
 import com.githinit.springboot.demo.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService {
 
     public List<Employee> findAll();
 
