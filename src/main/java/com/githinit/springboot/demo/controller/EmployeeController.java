@@ -3,9 +3,7 @@ package com.githinit.springboot.demo.controller;
 
 import com.githinit.springboot.demo.entity.Employee;
 import com.githinit.springboot.demo.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +26,32 @@ public class EmployeeController {
     public List<Employee> findAll() {
         return employeeService.findAll();
     }
+
+    //find one employee by id
+
+    @GetMapping("/employees/{id}")
+    public Employee find(@PathVariable int id) {
+        Employee employee = employeeService.findById(id);
+
+        if (employee == null) {
+            throw new RuntimeException("Employee not found - " + id);
+        }
+
+        return employee;
+    }
+
+    // post to add new employee
+    @PostMapping("/employees")
+    @CrossOrigin
+    public Employee addEmployee(@RequestBody Employee employee) {
+
+        employee.setId(0);
+
+        employeeService.save(employee);
+
+        return employee;
+
+    }
+
+
 }
