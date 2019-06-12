@@ -3,6 +3,7 @@ package com.githinit.springboot.demo.service;
 import com.githinit.springboot.demo.dao.EmployeeDAO;
 import com.githinit.springboot.demo.dao.EmployeeRepository;
 import com.githinit.springboot.demo.entity.Employee;
+import com.githinit.springboot.demo.exception.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (result.isPresent()) {
             employee = result.get();
         } else {
-            throw new RuntimeException("Did not find employee id - " + id);
+            throw new EmployeeNotFoundException("Employee not found - " + id);
         }
 
         return employee;

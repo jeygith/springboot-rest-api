@@ -2,6 +2,7 @@ package com.githinit.springboot.demo.controller;
 
 
 import com.githinit.springboot.demo.entity.Employee;
+import com.githinit.springboot.demo.exception.EmployeeNotFoundException;
 import com.githinit.springboot.demo.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,7 @@ public class EmployeeController {
         Employee employee = employeeService.findById(id);
 
         if (employee == null) {
-            throw new RuntimeException("Employee not found - " + id);
+            throw new EmployeeNotFoundException("Employee not found - " + id);
         }
 
         return employee;
