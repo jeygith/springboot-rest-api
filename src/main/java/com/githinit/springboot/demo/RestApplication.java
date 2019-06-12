@@ -1,4 +1,4 @@
-package com.githinit.springboot.rest;
+package com.githinit.springboot.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
