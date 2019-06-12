@@ -28,12 +28,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     public void save(Employee employee) {
         employeeDAO.save(employee);
 
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
 
         employeeDAO.deleteById(id);
